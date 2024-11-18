@@ -60,6 +60,7 @@ public class Main {
 
         }
     }
+    // Метод для проверики и парсинга чисел
     private static int parseNumber (String str) throws Exception {
         int number ;
         try {
