@@ -3,7 +3,7 @@ import java.util.Scanner;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Калькулятор запущен: Введите уравнение!");
@@ -31,8 +31,8 @@ public class Main {
         if (words.length != 3) {
             throw new Exception("Не верный формат уровнения! Пример: a + b");
         }
-        int a = Integer.parseInt(words[0]);
-        int b = Integer.parseInt(words[2]);
+        int a = parseNumber(words[0]);
+        int b = parseNumber(words[2]);
 
         char operator = words[1].charAt(0);
 
@@ -43,22 +43,18 @@ public class Main {
 
     // Метод для выполнения операций
     private static int operation (int a, int b, char operator)throws Exception{
-        switch (operator) {
-            case '+':
-                return a + b;
-            case '-':
-                return a - b;
-            case '*':
-                return a * b;
-            case '/':
+        return switch (operator) {
+            case '+' -> a + b;
+            case '-' -> a - b;
+            case '*' -> a * b;
+            case '/' -> {
                 if (b == 0) {
                     throw new Exception("Нельзя делить на ноль! p.s. даже если хочется");
                 }
-                return a / b;
-            default:
-                throw new Exception("Неизвестный тип операции");
-
-        }
+                yield a / b;
+            }
+            default -> throw new Exception("Неизвестный тип операции");
+        };
     }
     // Метод для проверики и парсинга чисел
     private static int parseNumber (String str) throws Exception {
