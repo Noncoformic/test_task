@@ -23,7 +23,7 @@ public class Main {
 
 
     }
-    private static String calc(String input) throws Exception {
+    public static String calc(String input) throws Exception {
         input = input.trim();
 
         String[] words = input.split(" ");
@@ -42,7 +42,7 @@ public class Main {
     }
 
     // Метод для выполнения операций
-    private static int operation (int a, int b, char operator)throws Exception{
+    public static int operation (int a, int b, char operator)throws Exception{
         return switch (operator) {
             case '+' -> a + b;
             case '-' -> a - b;
@@ -57,7 +57,7 @@ public class Main {
         };
     }
     // Метод для проверики и парсинга чисел
-    private static int parseNumber (String str) throws Exception {
+    public static int parseNumber (String str) throws Exception {
         int number ;
         try {
             number = Integer.parseInt(str);
